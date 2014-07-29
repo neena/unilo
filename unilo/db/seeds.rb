@@ -27,8 +27,9 @@ end
                       year_abroad?: course.css("YEARABROAD").children[0].to_s,
                       kisid: course.css("KISCOURSEID").children[0].to_s,
                       fee: course.css("ENGFEE").children[0].to_s.to_i,
-                      satisfaction: (course.css("NSS Q22").to_s.to_i)/100,
-                      salary_6m: course.css("SALARY INSTMED"))
+                      satisfaction: (course.css("NSS Q22").children[0].to_s.to_i)/100.0,
+                      salary_6m: course.css("SALARY INSTMED").children[0].to_s.to_i,
+                      jacs: course.css("JACS").children[0].to_s)
   end
 end
 

@@ -12,4 +12,16 @@ class QuestionsController < ApplicationController
     redirect_to @question.next_question
   end
 
+  def complete
+    Course.all.select do |course|
+      course.jacs == session[:user_response][:jacs_course_id]
+    end.inject({}) do |courses, c|
+      courses[c] = session[:user_response].inject(0) do |score, (k, v)|
+        eval("c.#{k}")*v if v.is_a? Numeric
+      end
+      courses
+    end.sort_by do |course, score|
+      score
+    end.map.values
+  end 
 end
