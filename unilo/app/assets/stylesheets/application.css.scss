@@ -13,18 +13,25 @@
  */
 
 @import "bootstrap";
-@import url(http://fonts.googleapis.com/css?family=Arvo|Lobster);
+@import url("http://fonts.googleapis.com/css?family=Arvo|Lobster");
 
 .header {
-	color:#FF8D53;
-	h1 {
-		font-family: "Lobster", cursive;
-	}
-	li {
-		font-family: "Arvo", cursive;
-	}
+  background-color: #ff8d53;
+  h1 {
+  font-family: "Lobster", cursive;
+  font-size: 32px;
+  font-style: none;
+  color: white;
+  }
 }
+<<<<<<< Updated upstream
 .footer {
 	
 }
 
+=======
+.central-content p {
+  margin-right: auto;
+  margin-left: auto;
+}
+>>>>>>> Stashed changes
