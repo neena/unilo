@@ -15,21 +15,22 @@
 @import "bootstrap";
 @import url("http://fonts.googleapis.com/css?family=Arvo|Lobster");
 
+body {
+  background-color: #666;
+}
 .header {
-  background-color: #ff8d53;
-  h1 {
-  font-family: "Lobster", cursive;
-  font-size: 32px;
-  font-style: none;
-  color: white;
+  background-color: #FF6A22;
+  margin-bottom: 0;
+  border: none;
+  padding: 4px;
+  .title {
+    font-family: "Lobster", cursive;
+    font-size: 48px;
+    font-style: none;
+    color: white;
   }
 }
-
-.footer {
-	
-}
-
-.central-content p {
-  margin-right: auto;
-  margin-left: auto;
+.central-col {
+  background-color: white;
+  height:100%;
 }
