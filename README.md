@@ -1,3 +1,3 @@
 unilo
 =====
-University ranking quiz for cool people.
+University ranking quiz
