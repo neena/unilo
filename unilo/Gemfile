@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'haml'
+
 # Bootstrap sass for use on the front end
 gem 'autoprefixer-rails'
 
