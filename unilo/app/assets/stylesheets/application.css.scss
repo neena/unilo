@@ -13,3 +13,17 @@
  */
 
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Arvo|Lobster);
+
+.header {
+	color:#FF8D53;
+	h1 {
+		font-family: "Lobster", cursive;
+	}
+	li {
+		font-family: "Arvo", cursive;
+	}
+}
+.footer {
+	
+}
