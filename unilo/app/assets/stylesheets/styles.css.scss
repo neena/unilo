@@ -6,11 +6,16 @@ body {
   margin-bottom: 0;
   border: none;
   padding: 4px;
+  box-shadow: 0 1px 3px #222;
   .title {
     font-family: "Lobster", cursive;
     font-size: 48px;
     font-style: none;
     color: white;
+  }
+  .title:hover {
+    color:white;
+    font-size:50px;
   }
 }
 .central-col {
