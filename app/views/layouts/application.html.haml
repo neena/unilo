@@ -5,10 +5,18 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
+
     .navbar.navbar-default.navbar-static-top.header
       .navbar-header
         %a.navbar-brand.title{:href =>"#"} Unilo
-    .container.central-col= yield
+
+    #flash-display
+      - flash.each do |type, msg|
+        %div{:class => "alert alert-#{type == :notice ? "success" : type} fadeout", "data-dismiss" => "alert"}
+          %button.close &times;
+          = msg if msg.is_a?(String)
+    .container.central-col
+      = yield
 
     .footer
       .container Place sticky footer content here
