@@ -1,3 +1,0 @@
-unilo
-=====
-University ranking quiz
