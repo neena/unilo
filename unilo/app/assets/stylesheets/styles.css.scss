@@ -15,5 +15,14 @@ body {
 }
 .central-col {
   background-color: white;
-  height:100%;
+  height: 100vh;
+  width: 70%;
+}
+
+.footer {
+  background-color: #333;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
 }
