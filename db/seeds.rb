@@ -11,9 +11,6 @@ f.close
 
 puts "Loaded and parsed XML"
 
-University.delete_all
-Course.delete_all
-
 @locations = @xml.css("LOCATION").inject({}) do |hash, loc|
   hash[loc.css("UKPRN").children[0].to_s] = {latitude: loc.css("LATITUDE").children[0].to_s.to_f,
                                             longitude: loc.css("LONGITUDE").children[0].to_s.to_f,
