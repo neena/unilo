@@ -1,0 +1,62 @@
+.content {
+  background-color:  #F27228;
+  box-shadow: 0 0 3px 3px #333;
+  width:60%;
+  postion: absolute;
+  text-align: center;
+  font-family: "Droid Sans", sans-serif;
+  font-size: 18px;
+  padding: 0;
+}
+
+.title {
+  color: white;
+  font-family: "Lobster", cursive;
+  font-size: 72px;
+}
+.login_here {
+  background-color:#eee;
+  width: auto;
+  padding: 16px;
+  margin: 10% 20% 10% 20%;
+  box-shadow: 0 0 3px #333 inset;
+  border-radius: 10px;
+  /*visibility: hidden;*/
+}
+
+.info {
+  color: white;
+  padding: 16px;
+  padding-top: 0;
+  font-size: 24px;
+  font-family: "Arvo", serif;
+
+}
+.register_here {
+  padding: 16px;
+}
+.register_here a {
+  text-style: none;
+  color: white;
+}
+a:hover {
+  color:white;
+  font-weight: bold;    /*http://upload.wikimedia.org/wikipedia/commons/9/98/Oxford_Botanic_Garden_in_Autumn_2004.jpg*/
+}
+
+.loginbox {
+  background-image: url(http://loseweightandgainhealth.files.wordpress.com/2013/09/st-johns-red-brick.jpg);
+  background-size: 100%;
+  padding: 16px;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+}
+
+.btn.btn-default {
+  margin: 4px;
+  color: white;
+  background-color: #FF6A22;
+    &:hover {
+      background-color: #EE5911;
+    }
+}

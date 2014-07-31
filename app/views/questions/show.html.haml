@@ -1,1 +1,34 @@
-= @question.text
+.swipe
+  .questioncontainer
+    %p.questiontitle.row= "Question #{@question.order}"
+    %p.question.row.text-center= @question.text
+  .answercontainer
+    - case @question.question_type
+    - when "input"
+      .answer.row.col-md-6.input
+        %input.form-control{:placeholder => "Enter your name here", :maxlength => "25", :type => "text"}
+
+    - when "multi"
+      .answer.row.col-md-6.multi
+        %select.form-control
+          - content.each do |x|
+            %option= x
+
+    - when "slider"
+      .answer.row.col-md-6.slider
+        %input{:type => "range", :value => "5", :min => "0", :max => "10", "data-show-value" => "true"}
+
+    - when "grades"
+      .answer.row.col-md-6.grades
+        %select.form-control
+          %option 1
+          %option 2
+          %option 3
+          %option 4
+          %option 5
+
+
+.movement.row
+  .back.col-md-6
+
+  .next.col-md-6

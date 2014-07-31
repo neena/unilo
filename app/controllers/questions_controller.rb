@@ -1,6 +1,10 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    redirect_to Question.first
+  end
+
   def show
     @question = Question.find(params[:id])
   end
