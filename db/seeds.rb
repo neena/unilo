@@ -27,33 +27,35 @@ end
 
 @xml.css("INSTITUTION").each do |uni|
   pubukprn = uni.css("PUBUKPRN").children[0].to_s
-  loc = @locations[uni.css("UKPRN").children[0].to_s]
-  u = University.create({ukprn: pubukprn}.merge(loc || {}))
-  p u 
-  uni.css("KISCOURSE").each do |course|
-    course_data = find_details(pubukprn, course.css("KISCOURSEID").children[0].to_s, course.css("KISMODE").children[0].to_s)
-    c = Course.create(university: u, 
-                      url: course.css("CRSEURL").children[0].to_s,
-                      title: course.css("TITLE").children[0].to_s,
-                      year_abroad?: course.css("YEARABROAD").children[0].to_s,
-                      kisid: course.css("KISCOURSEID").children[0].to_s,
-                      fee_raw: course.css("ENGFEE").children[0].to_s.to_i,
-                      satisfaction: (course.css("NSS Q22").children[0].to_s.to_i)/100.0,
-                      salary_6m_raw: course.css("SALARY INSTMED").children[0].to_s.to_i,
-                      mode: course.css("KISMODE").children[0].to_s,
-                      work_study: course.css("EMPLOYMENT WORKSTUDY").children[0].to_s,
-                      ucas: course.css("UCASCOURSEID").children[0].to_s,
-                      explanation_quality: (course.css("NSS Q1").children[0].to_s.to_i)/100.0,
-                      interesting: (course.css("NSS Q2").children[0].to_s.to_i)/100.0,
-                      enthusiastic: (course.css("NSS Q3").children[0].to_s.to_i)/100.0,
-                      intellectually_stimulating: (course.css("NSS Q4").children[0].to_s.to_i)/100.0,
-                      prompt_feedback: (course.css("NSS Q7").children[0].to_s.to_i)/100.0,
-                      library: (course.css("NSS Q16").children[0].to_s.to_i)/100.0,
-                      accessible_it: (course.css("NSS Q17").children[0].to_s.to_i)/100.0,
-                      confidence: (course.css("NSS Q21").children[0].to_s.to_i)/100.0,
-                      supervised_time: (course.css("AVGCOURSEWORK").children[0].to_s.to_i)/100.0,
-                      assessment_by_cw: (course.css("AVGSCHEDULED").children[0].to_s.to_i)/100.0)
-    p c
+  unless University.find_by_ukprn(pubukprn)
+    loc = @locations[uni.css("UKPRN").children[0].to_s]
+    u = University.create({ukprn: pubukprn}.merge(loc || {}))
+    p u 
+    uni.css("KISCOURSE").each do |course|
+      course_data = find_details(pubukprn, course.css("KISCOURSEID").children[0].to_s, course.css("KISMODE").children[0].to_s)
+      c = Course.create(university: u, 
+                        url: course.css("CRSEURL").children[0].to_s,
+                        title: course.css("TITLE").children[0].to_s,
+                        year_abroad?: course.css("YEARABROAD").children[0].to_s,
+                        kisid: course.css("KISCOURSEID").children[0].to_s,
+                        fee_raw: course.css("ENGFEE").children[0].to_s.to_i,
+                        satisfaction: (course.css("NSS Q22").children[0].to_s.to_i)/100.0,
+                        salary_6m_raw: course.css("SALARY INSTMED").children[0].to_s.to_i,
+                        mode: course.css("KISMODE").children[0].to_s,
+                        work_study: course.css("EMPLOYMENT WORKSTUDY").children[0].to_s,
+                        ucas: course.css("UCASCOURSEID").children[0].to_s,
+                        explanation_quality: (course.css("NSS Q1").children[0].to_s.to_i)/100.0,
+                        interesting: (course.css("NSS Q2").children[0].to_s.to_i)/100.0,
+                        enthusiastic: (course.css("NSS Q3").children[0].to_s.to_i)/100.0,
+                        intellectually_stimulating: (course.css("NSS Q4").children[0].to_s.to_i)/100.0,
+                        prompt_feedback: (course.css("NSS Q7").children[0].to_s.to_i)/100.0,
+                        library: (course.css("NSS Q16").children[0].to_s.to_i)/100.0,
+                        accessible_it: (course.css("NSS Q17").children[0].to_s.to_i)/100.0,
+                        confidence: (course.css("NSS Q21").children[0].to_s.to_i)/100.0,
+                        supervised_time: (course.css("AVGCOURSEWORK").children[0].to_s.to_i)/100.0,
+                        assessment_by_cw: (course.css("AVGSCHEDULED").children[0].to_s.to_i)/100.0)
+      p c
+    end
   end
 end
 
