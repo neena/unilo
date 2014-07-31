@@ -10,13 +10,13 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'duck-duck-go', '~> 1.1.3'
+gem 'nokogiri'
 
 group :doc do
   gem 'sdoc', require: false
 end
 
 group :development do 
-  gem 'nokogiri'
   gem 'sqlite3'
 end
 

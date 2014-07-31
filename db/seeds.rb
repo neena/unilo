@@ -1,6 +1,5 @@
 require 'open-uri'
 require "duck_duck_go"
-require 'nokogiri'
 
 def find_details(pubukprn, kisid, mode)
   data = JSON.parse(open("https://data.unistats.ac.uk/api/v2/KIS/Institution/#{pubukprn}/Course/#{kisid}/#{mode.to_i - 1}.json", :http_basic_authentication=>["8YDECS8XPZ9R5RTBA72Z", "password"]).read)
