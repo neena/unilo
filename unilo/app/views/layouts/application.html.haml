@@ -8,7 +8,14 @@
     .navbar.navbar-default.navbar-static-top.header
       .navbar-header
         %a.navbar-brand.title{:href =>"#"} Unilo
-    .container.central-col= yield
+    .container.central-col.fill= yield
 
     .footer
-      .container Place sticky footer content here
+      .container
+        .footer_links
+          %a#about About
+          |
+          %a#team Team
+          |
+          %a#yrs YRS
+        

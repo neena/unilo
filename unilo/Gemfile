@@ -10,6 +10,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'haml'
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'jquery-ui-rails'
+gem 'rails4-autocomplete'
+gem 'jquery-nouislider-rails'
 
 group :doc do
   gem 'sdoc', require: false
