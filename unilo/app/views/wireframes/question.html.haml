@@ -1,0 +1,47 @@
+.swipe
+  .questioncontainer
+    %p.questiontitle.row
+      Question 1
+    %p.question.row.text-center
+      What is your name?
+
+  .answercontainer
+
+    //standard input question
+    .answer.row.col-md-6.input
+      %input.form-control{:placeholder => "Enter your name here", :maxlength => "25", :type => "text"}
+
+    //multiple choice question
+    .answer.row.col-md-6.multi
+      %select.form-control
+        %option 1
+        %option 2
+        %option 3
+        %option 4
+        %option 5
+
+    //autocompleting input field
+    .answer.row.col-md-6.auto
+      //https://github.com/crowdint/rails3-jquery-autocomplete CAPTAIN NOT MY JOB
+
+    //slider for preference
+    .answer.row.col-md-6.slider
+
+
+    //grades dropdowns
+    .answer.row.col-md-6.grades
+      %select.form-control
+        %option 1
+        %option 2
+        %option 3
+        %option 4
+        %option 5
+
+    //location input field
+    .answer.row.col-md-6.location
+      =text_field_tag 'name', nil, placeholder: 'Enter your name here', maxlength: 25
+
+.movement.row
+  .back.col-md-6
+
+  .next.col-md-6

@@ -12,6 +12,9 @@ gem 'devise'
 gem 'duck-duck-go', '~> 1.1.3'
 gem 'haml'
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'jquery-ui-rails'
+gem 'rails4-autocomplete'
+gem 'jquery-nouislider-rails'
 
 group :doc do
   gem 'sdoc', require: false

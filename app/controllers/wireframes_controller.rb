@@ -4,7 +4,7 @@ class WireframesController < ApplicationController
       @wireframe_path = "wireframe_#{params[:path]}"
       render :template => "wireframes/#{params[:path]}"
     else
-      render :action => 'index'
+      render :action => 'index', :layout => 'home'
     end
   end
 end
