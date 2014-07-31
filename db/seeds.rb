@@ -73,8 +73,7 @@ ddg = DuckDuckGo.new
 
 University.all.each do |uni|
   res = ddg.zeroclickinfo(uni.title)
-  puts res.image
-  uni.image_url = res.image.to_s
+  uni.description = res.abstract
   uni.save
 end
 
