@@ -56,14 +56,14 @@ require "duck_duck_go"
 #   end
 # end
 
-University.all.each do |uni|
-  data = JSON.parse(open("https://data.unistats.ac.uk/api/v2/KIS/Institution/#{uni.ukprn}.json", :http_basic_authentication=>["8YDECS8XPZ9R5RTBA72Z", "password"]).read)
-  uni.title = data["Name"]
-  uni.save
-end
+# University.all.each do |uni|
+#   data = JSON.parse(open("https://data.unistats.ac.uk/api/v2/KIS/Institution/#{uni.ukprn}.json", :http_basic_authentication=>["8YDECS8XPZ9R5RTBA72Z", "password"]).read)
+#   uni.title = data["Name"]
+#   uni.save
+# end
 
 Course.all.each do |course|
-  course_data = find_details(pubukprn, course.kisid, course.mode)
+  course_data = find_details(course.university.ukprn, course.kisid, course.mode)
   course.jacs = course_data["JACSCodes"][0]
   course.set_image_url
   course.save
