@@ -1,8 +1,8 @@
 = link_to elo_choose_questions_path({preferred_university_id: @university2.id, other_university_id: @university1.id}) do 
   = @university1.id
-  = image_tag @university1.photo_url, width: 500
+  = image_tag @university1.get_image_url, width: 500
 
 = link_to elo_choose_questions_path({preferred_university_id: @university2.id, other_university_id: @university1.id}) do 
   = @university2.id
-  = image_tag @university2 .photo_url, width: 500
+  = image_tag @university2.get_image_url, width: 500
 

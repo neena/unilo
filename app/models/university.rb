@@ -8,5 +8,6 @@ class University < ActiveRecord::Base
     data = JSON.parse(open("https://api.datamarket.azure.com/Bing/Search/v1/Image?$format=json&Query=%27#{URI.encode(self.title.gsub('&', '\&') + " campus")}%27", :http_basic_authentication=>["8g4bf1KG8MEmBTM1JMnPv47TbemHVjJrhLfG6ZnOFcU", "8g4bf1KG8MEmBTM1JMnPv47TbemHVjJrhLfG6ZnOFcU"]).read)
     self.image_url = data["d"]["results"][0]["MediaUrl"]
     self.save
+    self.image_url
   end
 end
