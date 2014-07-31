@@ -11,22 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730135333) do
+ActiveRecord::Schema.define(version: 20140731110804) do
 
   create_table "courses", force: true do |t|
     t.string   "url"
     t.string   "title"
     t.integer  "year_abroad?"
     t.string   "kisid"
-    t.integer  "fee"
     t.float    "satisfaction"
     t.string   "offer"
-    t.integer  "salary_6m"
     t.integer  "salary_40m"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "university_id"
     t.string   "jacs"
+    t.integer  "salary_6m_raw"
+    t.float    "salary_6m"
+    t.integer  "fee_raw"
+    t.float    "fee"
+    t.float    "work_study"
+    t.string   "ucas"
+    t.float    "explanation_quality"
+    t.float    "interesting"
+    t.float    "enthusiastic"
+    t.float    "intellectually_stimulating"
+    t.float    "prompt_feedback"
+    t.float    "library"
+    t.float    "accessible_it"
+    t.float    "accessible_equipment"
+    t.float    "confidence"
+    t.float    "supervised_time"
+    t.float    "assessment_by_cw"
+    t.integer  "mode"
   end
 
   add_index "courses", ["university_id"], name: "index_courses_on_university_id"
