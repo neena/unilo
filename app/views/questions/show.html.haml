@@ -27,6 +27,11 @@
           %option 4
           %option 5
 
+    - when "jacs"
+      .ui-widget
+        %label{for: "jacs"} Subject
+        %input#jacs{"data-fields" => @jacs}
+
 
 .movement.row
   .back.col-md-6

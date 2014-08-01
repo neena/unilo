@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @jacs = JacsCode.all.map(&:name) if @question.question_type == "jacs"
   end
 
   def next_question
@@ -31,10 +32,8 @@ class QuestionsController < ApplicationController
       courses
     end.sort_by do |course, score|
       score
-    end.map do |x|
-      x[0]
-    end.first(20).each do |c|
-      e = EloScore.new(university: c.university, user: current_user, score: 115)
+    end.first(20).each do |(c, s)|
+      e = EloScore.new(university: c.university, user: current_user, score: (100 + s))
       e.save
     end
     redirect_to elos_path

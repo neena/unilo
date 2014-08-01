@@ -1,5 +1,6 @@
 require 'open-uri'
 require "duck_duck_go"
+require 'csv'
 
 # def find_details(pubukprn, kisid, mode)
 #   data = JSON.parse(open("https://data.unistats.ac.uk/api/v2/KIS/Institution/#{pubukprn}/Course/#{kisid}/#{mode.to_i - 1}.json", :http_basic_authentication=>["8YDECS8XPZ9R5RTBA72Z", "password"]).read)
@@ -57,30 +58,40 @@ require "duck_duck_go"
 #   end
 # end
 
-University.all.each do |uni|
-  data = JSON.parse(open("https://data.unistats.ac.uk/api/v2/KIS/Institution/#{uni.ukprn}.json", :http_basic_authentication=>["8YDECS8XPZ9R5RTBA72Z", "password"]).read)
-  uni.title = data["Name"]
-  uni.save
+# University.all.each do |uni|
+#   data = JSON.parse(open("https://data.unistats.ac.uk/api/v2/KIS/Institution/#{uni.ukprn}.json", :http_basic_authentication=>["8YDECS8XPZ9R5RTBA72Z", "password"]).read)
+#   uni.title = data["Name"]
+#   uni.save
+# end
+
+# Course.all.each do |course|
+#   course_data = find_details(pubukprn, course.kisid, course.mode)
+#   course.jacs = course_data["JACSCodes"][0]
+#   course.set_image_url
+#   course.save
+# end
+
+# ddg = DuckDuckGo.new
+
+# University.all.each do |uni|
+#   res = ddg.zeroclickinfo(uni.title)
+#   puts res.image
+#   uni.image_url = res.image.to_s
+#   uni.save
+# end
+
+# csv_raw = File.open("#{Rails.root}/public/jacscodes.csv")
+# csv = CSV.parse(csv_raw, :headers => true)
+# csv.each do |row|
+#   j = JacsCode.new(code: row["id"], name: row["title"])
+#   j.save
+#   p j
+# end
+
+Course.each do |c|
+  c.jacs_code = JacsCode.find_by_code(c.jacs.to_i)
+  c.save 
 end
-
-Course.all.each do |course|
-  course_data = find_details(pubukprn, course.kisid, course.mode)
-  course.jacs = course_data["JACSCodes"][0]
-  course.set_image_url
-  course.save
-end
-
-ddg = DuckDuckGo.new
-
-University.all.each do |uni|
-  res = ddg.zeroclickinfo(uni.title)
-  puts res.image
-  uni.image_url = res.image.to_s
-  uni.save
-end
-
-
-
 
 
 
