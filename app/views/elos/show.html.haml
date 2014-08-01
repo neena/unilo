@@ -1,0 +1,17 @@
+/ = link_to elo_choose_questions_path({preferred_university_id: @university2.id, other_university_id: @university1.id}) do 
+/   = @university1.id
+/   = image_tag @university1.get_image_url, width: 500
+
+/ = link_to elo_choose_questions_path({preferred_university_id: @university2.id, other_university_id: @university1.id}) do 
+/   = @university2.id
+/   = image_tag @university2.get_image_url, width: 500
+
+
+.fmash.row
+  .uni1container.col-md-6
+    = link_to select_elo_path(@university1, @university2) do
+      = image_tag @university1.get_image_url, width: 500, class: "img-responsive img-circle uni1"
+
+  .uni2container.col-md-6
+    = link_to select_elo_path(@university2, @university1) do
+      = image_tag @university2.get_image_url, width: 500, class: "img-responsive img-circle uni2"

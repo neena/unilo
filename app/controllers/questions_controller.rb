@@ -37,24 +37,6 @@ class QuestionsController < ApplicationController
       e = EloScore.new(university: c.university, user: current_user, score: 115)
       e.save
     end
-    redirect_to elo_questions_path
-  end 
-
-  def elo
-    @universities = current_user.universities
-    @university1 = @universities.sample
-    @university2 = @universities.sample
-  end
-
-  def elo_choose
-    p params
-
-    high_score = current_user.elo_scores.find_by_university_id(params[:preferred_university_id])
-    low_score = current_user.elo_scores.find_by_university_id(params[:other_university_id])
-    high_score.new_rating(true, low_score)
-    low_score.new_rating(false, high_score)
-    high_score.save
-    low_score.save
-    redirect_to elo_questions_path
+    redirect_to elos_path
   end 
 end

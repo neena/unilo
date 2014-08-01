@@ -12,6 +12,7 @@ Unilo::Application.routes.draw do
     get :elo, on: :collection
     get :elo_choose, on: :collection
   end
+
   # You can have the root of your site routed with "root"
   root 'questions#index'
 
@@ -19,7 +20,9 @@ Unilo::Application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  get 'elos' => 'elos#index', as: :elos
+  get 'elos/:id1/:id2' => 'elos#show', as: :elo
+  get 'elos/:preferred_university_id/:other_university_id/complete' => 'elos#complete', as: :select_elo
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
