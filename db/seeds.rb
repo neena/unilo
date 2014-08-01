@@ -62,26 +62,26 @@ end
 #   uni.save
 # end
 
-Course.all.select do |c|
-  c.jacs.blank?
-end.each do |course|
-  course_data = find_details(course.university.ukprn, course.kisid, course.mode)
-  course.jacs = course_data["JACSCodes"][0]
-  course.save
-  p course
-end
+# Course.all.select do |c|
+#   c.jacs.blank?
+# end.each do |course|
+#   course_data = find_details(course.university.ukprn, course.kisid, course.mode)
+#   course.jacs = course_data["JACSCodes"][0]
+#   course.save
+#   p course
+# end
 
-ddg = DuckDuckGo.new
+# ddg = DuckDuckGo.new
 
-University.all.select do |u|
-  u.description.blank? || u.image_url.blank?
-end.each do |uni|
-  uni.set_image_url
-  res = ddg.zeroclickinfo(uni.title)
-  uni.description = res.abstract
-  uni.save
-  p uni
-end
+# University.all.select do |u|
+#   u.description.blank? || u.image_url.blank?
+# end.each do |uni|
+#   uni.set_image_url
+#   res = ddg.zeroclickinfo(uni.title)
+#   uni.description = res.abstract
+#   uni.save
+#   p uni
+# end
 
 
 
