@@ -62,7 +62,9 @@ end
 #   uni.save
 # end
 
-Course.all.each do |course|
+Course.all.select do |c|
+  c.jacs.blank?
+end.each do |course|
   course_data = find_details(course.university.ukprn, course.kisid, course.mode)
   course.jacs = course_data["JACSCodes"][0]
   course.save
@@ -70,7 +72,9 @@ end
 
 ddg = DuckDuckGo.new
 
-University.all.each do |uni|
+University.all.select do |u|
+  u.description.blank? || u.image_url.blank?
+end.each do |uni|
   uni.set_image_url
   res = ddg.zeroclickinfo(uni.title)
   uni.description = res.abstract
