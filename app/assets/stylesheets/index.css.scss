@@ -45,18 +45,9 @@ a:hover {
 }
 
 .loginbox {
-  background-image: url(http://loseweightandgainhealth.files.wordpress.com/2013/09/st-johns-red-brick.jpg);
-  background-size: 100%;
+  background-image: image-url("cover.jpg");
+  background-size: 200%;
   padding: 16px;
   border-top: 3px solid white;
   border-bottom: 3px solid white;
-}
-
-.btn.btn-default {
-  margin: 4px;
-  color: white;
-  background-color: #FF6A22;
-    &:hover {
-      background-color: #EE5911;
-    }
 }

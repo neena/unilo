@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true 
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    .container.content
+      %h1.title Unilo
+      .info 
+        Where will you go?
+        %br
+        Find you perfect university.
+      .loginbox
+        = render "layouts/flash"
+        .login_here.container
+          .col-md-8.col-md-offset-2
+            = yield
+      .register_here
+        = link_to "No account? Register here.", new_user_registration_path
+
+
+    
