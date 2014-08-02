@@ -20,10 +20,15 @@
         %input{:type => "range", :value => "5", :min => "0", :max => "10", "data-show-value" => "true", name: "response"}
 
     - when "highlo-slider"
-      .answer.row.col-md-6.slider
-        Low
-        %input{:type => "range", :value => "0", :min => "-10", :max => "10", "data-show-value" => "true", name: "response", style: "display: inline-block"}
-        High
+      .row
+        .col-md-2
+        .col-md-1
+          Low
+        .col-md-6.slider
+          %input{:type => "range", :value => "0", :min => "-10", :max => "10", "data-show-value" => "true", name: "response", style: "display: inline-block"}
+        .col-md-1
+          High
+        .col-md-2
 
     - when "agree-multi"
       .answer.row.col-md-6.grades
