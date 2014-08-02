@@ -93,10 +93,10 @@ end
 #   p j
 # end
 
-Course.all.each do |c|
-  c.jacs_code = JacsCode.find_by_code(c.jacs.to_i)
-  c.save 
-end
+# Course.all.each do |c|
+#   c.jacs_code = JacsCode.find_by_code(c.jacs.to_i)
+#   c.save 
+# end
 
 
 Question.delete_all
