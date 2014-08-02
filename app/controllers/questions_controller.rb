@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    redirect_to Question.first
+    redirect_to Question.all.sort_by(&:order).first
   end
 
   def show

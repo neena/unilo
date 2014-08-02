@@ -111,6 +111,8 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    spinjs-rails (1.3)
+      rails (>= 3.1)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -157,6 +159,7 @@ DEPENDENCIES
   rails_12factor
   sass-rails (~> 4.0.0)
   sdoc
+  spinjs-rails
   sqlite3
   turbolinks
   uglifier (>= 1.3.0)

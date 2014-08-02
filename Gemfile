@@ -16,6 +16,7 @@ gem 'jquery_mobile_rails'
 gem 'rails4-autocomplete'
 gem 'jquery-nouislider-rails'
 gem 'nokogiri'
+gem 'spinjs-rails'
 
 group :doc do
   gem 'sdoc', require: false
