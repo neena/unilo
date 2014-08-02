@@ -63,7 +63,8 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.0)
       railties (>= 3.2.16)
-    jquerymobile-rails (0.2.3)
+    jquery_mobile_rails (1.4.3)
+      railties (>= 3.1.0)
     json (1.8.1)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -148,7 +149,7 @@ DEPENDENCIES
   jquery-nouislider-rails
   jquery-rails
   jquery-ui-rails
-  jquerymobile-rails
+  jquery_mobile_rails
   nokogiri
   pg
   rails (= 4.0.0)

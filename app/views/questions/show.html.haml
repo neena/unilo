@@ -19,18 +19,30 @@
       .answer.row.col-md-6.slider
         %input{:type => "range", :value => "5", :min => "0", :max => "10", "data-show-value" => "true", name: "response"}
 
-    - when "hilo-slider"
+    - when "highlo-slider"
       .answer.row.col-md-6.slider
-        %input{:type => "range", :value => "5", :min => "-10", :max => "10", "data-show-value" => "true", name: "response"}
+        Low
+        %input{:type => "range", :value => "0", :min => "-10", :max => "10", "data-show-value" => "true", name: "response", style: "display: inline-block"}
+        High
 
     - when "agree-multi"
       .answer.row.col-md-6.grades
-        %select.form-control
+        %select.form-control{name: "response"}
           %option Strongly Agree
           %option Agree
           %option No opinion either way
           %option Disagree
           %option Strongly disagree
+
+    - when "importance-multi"
+      .answer.row.col-md-6.grades
+        %select.form-control{name: "response"}
+          %option Very important
+          %option Quite important
+          %option Important
+          %option A bit important
+          %option Unimportant
+
 
     - when "jacs"
       .ui-widget
