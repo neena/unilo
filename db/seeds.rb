@@ -1,19 +1,15 @@
 require 'open-uri'
 require "duck_duck_go"
-require 'csv'
 
-# def find_details(pubukprn, kisid, mode)
-#   data = JSON.parse(open("https://data.unistats.ac.uk/api/v2/KIS/Institution/#{pubukprn}/Course/#{kisid}/#{mode.to_i - 1}.json", :http_basic_authentication=>["8YDECS8XPZ9R5RTBA72Z", "password"]).read)
-# end
+def find_details(pubukprn, kisid, mode)
+  data = JSON.parse(open("https://data.unistats.ac.uk/api/v2/KIS/Institution/#{pubukprn}/Course/#{kisid}/#{mode.to_i - 1}.json", :http_basic_authentication=>["8YDECS8XPZ9R5RTBA72Z", "password"]).read)
+end
 
 # f = open("http://aldreth.com/data.xml")
 # @xml = Nokogiri::XML(f)
 # f.close
 
 # puts "Loaded and parsed XML"
-
-# University.delete_all
-# Course.delete_all
 
 # @locations = @xml.css("LOCATION").inject({}) do |hash, loc|
 #   hash[loc.css("UKPRN").children[0].to_s] = {latitude: loc.css("LATITUDE").children[0].to_s.to_f,
@@ -28,33 +24,35 @@ require 'csv'
 
 # @xml.css("INSTITUTION").each do |uni|
 #   pubukprn = uni.css("PUBUKPRN").children[0].to_s
-#   loc = @locations[uni.css("UKPRN").children[0].to_s]
-#   u = University.create!({ukprn: pubukprn}.merge(loc || {}))
-#   p u 
-#   uni.css("KISCOURSE").each do |course|
-#     course_data = find_details(pubukprn, course.css("KISCOURSEID").children[0].to_s, course.css("KISMODE").children[0].to_s)
-#     c = Course.create!(university: u, 
-#                       url: course.css("CRSEURL").children[0].to_s,
-#                       title: course.css("TITLE").children[0].to_s,
-#                       year_abroad?: course.css("YEARABROAD").children[0].to_s,
-#                       kisid: course.css("KISCOURSEID").children[0].to_s,
-#                       fee_raw: course.css("ENGFEE").children[0].to_s.to_i,
-#                       satisfaction: (course.css("NSS Q22").children[0].to_s.to_i)/100.0,
-#                       salary_6m_raw: course.css("SALARY INSTMED").children[0].to_s.to_i,
-#                       mode: course.css("KISMODE").children[0].to_s,
-#                       work_study: course.css("EMPLOYMENT WORKSTUDY").children[0].to_s,
-#                       ucas: course.css("UCASCOURSEID").children[0].to_s,
-#                       explanation_quality: (course.css("NSS Q1").children[0].to_s.to_i)/100.0,
-#                       interesting: (course.css("NSS Q2").children[0].to_s.to_i)/100.0,
-#                       enthusiastic: (course.css("NSS Q3").children[0].to_s.to_i)/100.0,
-#                       intellectually_stimulating: (course.css("NSS Q4").children[0].to_s.to_i)/100.0,
-#                       prompt_feedback: (course.css("NSS Q7").children[0].to_s.to_i)/100.0,
-#                       library: (course.css("NSS Q16").children[0].to_s.to_i)/100.0,
-#                       accessible_it: (course.css("NSS Q17").children[0].to_s.to_i)/100.0,
-#                       confidence: (course.css("NSS Q21").children[0].to_s.to_i)/100.0,
-#                       supervised_time: (course.css("AVGCOURSEWORK").children[0].to_s.to_i)/100.0,
-#                       assessment_by_cw: (course.css("AVGSCHEDULED").children[0].to_s.to_i)/100.0)
-#     p c
+#   unless University.find_by_ukprn(pubukprn)
+#     loc = @locations[uni.css("UKPRN").children[0].to_s]
+#     u = University.create({ukprn: pubukprn}.merge(loc || {}))
+#     p u 
+#     uni.css("KISCOURSE").each do |course|
+#       course_data = find_details(pubukprn, course.css("KISCOURSEID").children[0].to_s, course.css("KISMODE").children[0].to_s)
+#       c = Course.create(university: u, 
+#                         url: course.css("CRSEURL").children[0].to_s,
+#                         title: course.css("TITLE").children[0].to_s,
+#                         year_abroad?: course.css("YEARABROAD").children[0].to_s,
+#                         kisid: course.css("KISCOURSEID").children[0].to_s,
+#                         fee_raw: course.css("ENGFEE").children[0].to_s.to_i,
+#                         satisfaction: (course.css("NSS Q22").children[0].to_s.to_i)/100.0,
+#                         salary_6m_raw: course.css("SALARY INSTMED").children[0].to_s.to_i,
+#                         mode: course.css("KISMODE").children[0].to_s,
+#                         work_study: course.css("EMPLOYMENT WORKSTUDY").children[0].to_s,
+#                         ucas: course.css("UCASCOURSEID").children[0].to_s,
+#                         explanation_quality: (course.css("NSS Q1").children[0].to_s.to_i)/100.0,
+#                         interesting: (course.css("NSS Q2").children[0].to_s.to_i)/100.0,
+#                         enthusiastic: (course.css("NSS Q3").children[0].to_s.to_i)/100.0,
+#                         intellectually_stimulating: (course.css("NSS Q4").children[0].to_s.to_i)/100.0,
+#                         prompt_feedback: (course.css("NSS Q7").children[0].to_s.to_i)/100.0,
+#                         library: (course.css("NSS Q16").children[0].to_s.to_i)/100.0,
+#                         accessible_it: (course.css("NSS Q17").children[0].to_s.to_i)/100.0,
+#                         confidence: (course.css("NSS Q21").children[0].to_s.to_i)/100.0,
+#                         supervised_time: (course.css("AVGCOURSEWORK").children[0].to_s.to_i)/100.0,
+#                         assessment_by_cw: (course.css("AVGSCHEDULED").children[0].to_s.to_i)/100.0)
+#       p c
+#     end
 #   end
 # end
 
@@ -64,50 +62,30 @@ require 'csv'
 #   uni.save
 # end
 
-# Course.all.each do |course|
-#   course_data = find_details(pubukprn, course.kisid, course.mode)
+# Course.all.select do |c|
+#   c.jacs.blank?
+# end.each do |course|
+#   course_data = find_details(course.university.ukprn, course.kisid, course.mode)
 #   course.jacs = course_data["JACSCodes"][0]
-#   course.set_image_url
 #   course.save
+#   p course
 # end
 
 # ddg = DuckDuckGo.new
 
-# University.all.each do |uni|
+# University.all.select do |u|
+#   u.description.blank? || u.image_url.blank?
+# end.each do |uni|
+#   uni.set_image_url
 #   res = ddg.zeroclickinfo(uni.title)
-#   puts res.image
-#   uni.image_url = res.image.to_s
+#   uni.description = res.abstract
 #   uni.save
+#   p uni
 # end
 
-# csv_raw = File.open("#{Rails.root}/public/jacscodes.csv")
-# csv = CSV.parse(csv_raw, :headers => true)
-# csv.each do |row|
-#   j = JacsCode.new(code: row["id"], name: row["title"])
-#   j.save
-#   p j
-# end
 
-# Course.each do |c|
-#   c.jacs_code = JacsCode.find_by_code(c.jacs.to_i)
-#   c.save 
-# end
 
-Question.delete_all
 
-p Question.create!(text: "How much do you value having a year abroad?", question_type: "slider", identifier: "year_abroad?")
-p Question.create!(text: "How important is student satisfaction to you?", question_type: "slider", identifier: "satisfaction")
-p Question.create!(text: "Do you consider a high graduate income important?", question_type: "importance-multi", identifier: "salary_6m")
-p Question.create!(text: "A high tuition fee is of concern to me.(NB: This is a maximum 9,000 pa in UK)", question_type: "agree-multi", identifier: "fee")
-p Question.create!(text: "How much time would you like to spend in lectures/seminars?", question_type: "highlo-slider", identifier: "supervised_time")
-p Question.create!(text: "Do you consider the number of people going on to work and/or study relevant?", question_type: "slider", identifier: "work_study")
-p Question.create!(text: "Do high results on the NSS regarding explanation quality matter to you?", question_type: "slider", identifier: "explanation_quality")
-p Question.create!(text: "Do you think it's important for lecturers to be interesting?", question_type: "slider", identifier: "interesting")
-p Question.create!(text: "Is it important to you that your lecturers are enthusiastic?", question_type: "slider", identifier: "enthusiastic")
-p Question.create!(text: "Do high results on the NSS regarding prompt feedback on work matter to you?", question_type: "slider", identifier: "prompt_feedback")
-p Question.create!(text: "Do high results on the NSS regarding library facilities matter to you?", question_type: "slider", identifier: "library")
-p Question.create!(text: "How important is the accessibility of IT facilities to you?", question_type: "slider", identifier: "accessible_it")
-p Question.create!(text: "How important is the accessibility of specialist equipment to you?", question_type: "slider", identifier: "accessible_equipment")
-p Question.create!(text: "Coursework is the best method of assessment for me.", question_type: "agree-multi", identifier: "assessment_by_cw")
 
-p Question.create!(text: "Does a high accommodation cost concern you?", question_type: "slider", identifier: "accomodation_cost")
+
+
