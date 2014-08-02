@@ -53,9 +53,11 @@
       .ui-widget
         %label{for: "jacs"} Subject
         %input#jacs{name: "response", "data-fields" => @jacs}
-    = link_to "Last question", last_question_path(@question), class: "btn btn-orange"
+    - unless @question == Question.all.sort_by(&:order).first
+      = link_to "Last question", last_question_path(@question), class: "btn btn-orange"
     = link_to "Skip the rest of this section", complete_questions_path, class: "btn btn-default"
-    = submit_tag "Next question", class: "btn btn-orange"
+    - unless @question == Question.all.sort_by(&:order).last
+      = submit_tag "Next question", class: "btn btn-orange"
   
 
 .movement.row
