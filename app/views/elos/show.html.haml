@@ -1,12 +1,12 @@
 %p.description Click your favourite university!
 .row
   = link_to select_elo_path(@university1, @university2) do
-    #box{style: "background: url(#{@university1.set_image_url})"}
+    #box{style: "background: url(#{@university1.image_url})"}
       #overlay
         %span{:id => "letter"} A
 
   = link_to select_elo_path(@university1, @university2) do
-    #box2{style: "background: url(#{@university2.set_image_url})"}
+    #box2{style: "background: url(#{@university2.image_url})"}
       #overlay
         %span{:id => "letter"} B
 
