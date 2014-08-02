@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140801092556) do
+ActiveRecord::Schema.define(version: 20140802014552) do
 
   create_table "courses", force: true do |t|
     t.string   "title"
@@ -43,8 +43,10 @@ ActiveRecord::Schema.define(version: 20140801092556) do
     t.float    "assessment_by_cw"
     t.integer  "mode"
     t.text     "url"
+    t.integer  "jacs_code_id"
   end
 
+  add_index "courses", ["jacs_code_id"], name: "index_courses_on_jacs_code_id"
   add_index "courses", ["university_id"], name: "index_courses_on_university_id"
 
   create_table "elo_scores", force: true do |t|

@@ -84,8 +84,38 @@ end
 # end
 
 
+csv_raw = File.open("#{Rails.root}/public/jacscodes.csv")
+csv = CSV.parse(csv_raw, :headers => true)
+csv.each do |row|
+  j = JacsCode.new(code: row["id"], name: row["title"])
+  j.save
+  p j
+end
+
+Course.each do |c|
+  c.jacs_code = JacsCode.find_by_code(c.jacs.to_i)
+  c.save 
+end
 
 
+Question.delete_all
+
+p Question.create!(text: "How much do you value having a year abroad?", question_type: "slider", identifier: "year_abroad?")
+p Question.create!(text: "How important is student satisfaction to you?", question_type: "slider", identifier: "satisfaction")
+p Question.create!(text: "Do you consider a high graduate income important?", question_type: "importance-multi", identifier: "salary_6m")
+p Question.create!(text: "A high tuition fee is of concern to me.(NB: This is a maximum 9,000 pa in UK)", question_type: "agree-multi", identifier: "fee")
+p Question.create!(text: "How much time would you like to spend in lectures/seminars?", question_type: "highlo-slider", identifier: "supervised_time")
+p Question.create!(text: "Do you consider the number of people going on to work and/or study relevant?", question_type: "slider", identifier: "work_study")
+p Question.create!(text: "Do high results on the NSS regarding explanation quality matter to you?", question_type: "slider", identifier: "explanation_quality")
+p Question.create!(text: "Do you think it's important for lecturers to be interesting?", question_type: "slider", identifier: "interesting")
+p Question.create!(text: "Is it important to you that your lecturers are enthusiastic?", question_type: "slider", identifier: "enthusiastic")
+p Question.create!(text: "Do high results on the NSS regarding prompt feedback on work matter to you?", question_type: "slider", identifier: "prompt_feedback")
+p Question.create!(text: "Do high results on the NSS regarding library facilities matter to you?", question_type: "slider", identifier: "library")
+p Question.create!(text: "How important is the accessibility of IT facilities to you?", question_type: "slider", identifier: "accessible_it")
+p Question.create!(text: "How important is the accessibility of specialist equipment to you?", question_type: "slider", identifier: "accessible_equipment")
+p Question.create!(text: "Coursework is the best method of assessment for me.", question_type: "agree-multi", identifier: "assessment_by_cw")
+
+p Question.create!(text: "Does a high accommodation cost concern you?", question_type: "slider", identifier: "accomodation_cost")
 
 
 
