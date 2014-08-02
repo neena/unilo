@@ -7,17 +7,21 @@
     - case @question.question_type
     - when "input"
       .answer.row.col-md-6.input
-        %input.form-control{:placeholder => "Enter your response here", :type => "text"}
+        %input.form-control{:placeholder => "Enter your response here", :type => "text", name: "response"}
 
     - when "multi"
       .answer.row.col-md-6.multi
-        %select.form-control
+        %select.form-control{name: "response"}
           - content.each do |x|
             %option= x
 
     - when "slider"
       .answer.row.col-md-6.slider
         %input{:type => "range", :value => "5", :min => "0", :max => "10", "data-show-value" => "true", name: "response"}
+
+    - when "hilo-slider"
+      .answer.row.col-md-6.slider
+        %input{:type => "range", :value => "5", :min => "-10", :max => "10", "data-show-value" => "true", name: "response"}
 
     - when "grades"
       .answer.row.col-md-6.grades
@@ -31,7 +35,7 @@
     - when "jacs"
       .ui-widget
         %label{for: "jacs"} Subject
-        %input#jacs{"data-fields" => @jacs}
+        %input#jacs{name: "response", "data-fields" => @jacs}
     = link_to "Last question", last_question_path(@question), class: "btn btn-orange"
     = link_to "Skip the rest of this section", complete_questions_path, class: "btn btn-default"
     = submit_tag "Next question", class: "btn btn-orange"

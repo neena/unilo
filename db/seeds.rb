@@ -85,15 +85,15 @@ end
 # end
 
 
-csv_raw = File.open("#{Rails.root}/public/jacscodes.csv")
-csv = CSV.parse(csv_raw, :headers => true)
-csv.each do |row|
-  j = JacsCode.new(code: row["id"], name: row["title"])
-  j.save
-  p j
-end
+# csv_raw = File.open("#{Rails.root}/public/jacscodes.csv")
+# csv = CSV.parse(csv_raw, :headers => true)
+# csv.each do |row|
+#   j = JacsCode.new(code: row["id"], name: row["title"])
+#   j.save
+#   p j
+# end
 
-Course.each do |c|
+Course.all.each do |c|
   c.jacs_code = JacsCode.find_by_code(c.jacs.to_i)
   c.save 
 end
