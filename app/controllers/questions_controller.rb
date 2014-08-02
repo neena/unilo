@@ -36,7 +36,7 @@ class QuestionsController < ApplicationController
     end.sort_by do |course, score|
       score
     end.first(20).each do |(c, s)|
-      e = EloScore.new(university: c.university, user: current_user, score: (100 + s))
+      e = EloScore.new(university: c.university, user: current_user, score: (100 + s)) unless current_user.universities.include? c.university
       e.save
     end
 
