@@ -1,5 +1,7 @@
 body {
   background-image: image_url('bg.png');
+  background-color: transparent !important;
+  
 }
 
 .header {
@@ -92,16 +94,32 @@ body {
 }
 
 #box {  
-  width:300px;
-  height:200px;
+  height:350px;
+  width: 35%;
   box-shadow:inset 1px 1px 40px 0 rgba(0,0,0,.45);
   border-bottom:2px solid #fff;
   border-right:2px solid #fff;
-  margin:5% auto 0 auto; 
+  margin:5% auto 5% 10%; 
   background:url(http://upload.wikimedia.org/wikipedia/commons/a/a9/University_of_Otago.jpg);
-  background-size:cover;
+  background-size:cover !important;
+  background-position: center center !important;
   border-radius:5px;
   overflow:hidden;
+  float: left;
+}
+
+#box2 {  
+  height:350px;
+  width: 35%;
+  box-shadow:inset 1px 1px 40px 0 rgba(0,0,0,.45);
+  border-bottom:2px solid #fff;
+  border-right:2px solid #fff;
+  margin:5% 10% 5% auto; 
+  background:url(http://upload.wikimedia.org/wikipedia/commons/a/a9/University_of_Otago.jpg);
+  background-size:cover !important;
+  border-radius:5px;
+  overflow:hidden;
+  float: right;
 }
 
 #overlay {  
@@ -111,17 +129,31 @@ body {
   opacity:0;
   -webkit-transition: opacity .25s ease;
   -moz-transition: opacity .25s ease;
+  height: 400px;
 }
 
 #box:hover #overlay {
   opacity:1;
 }
 
-#plus {
-  font-family:Helvetica;
+#box2:hover #overlay {
+  opacity:1;
+}
+
+#letter {
+  font-family: "Lobster", cursive;
   font-weight:900;
   color:rgba(255,255,255,.85);
   font-size:96px;
 }
 
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a, .ui-panel-wrapper {
+  background-color: transparent !important;
+}
 
+.description {
+  font-family: "Lobster", cursive;
+  font-size: 30px;
+  font-style: none;
+  color: black;
+}

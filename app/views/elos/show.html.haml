@@ -7,11 +7,29 @@
 /   = image_tag @university2.get_image_url, width: 500
 
 
-.fmash.row
-  .uni1container.col-md-6
-    = link_to select_elo_path(@university1, @university2) do
-      = image_tag @university1.get_image_url, width: 500, class: "img-responsive img-circle uni1"
+/ .fmash.row
+/   .uni1container.col-md-6
+/     = link_to select_elo_path(@university1, @university2) do
+/       = image_tag @university1.get_image_url, width: 500, class: "img-responsive img-circle uni1"
 
-  .uni2container.col-md-6
-    = link_to select_elo_path(@university2, @university1) do
-      = image_tag @university2.get_image_url, width: 500, class: "img-responsive img-circle uni2"
+/   .uni2container.col-md-6
+/     = link_to select_elo_path(@university2, @university1) do
+/       = image_tag @university2.get_image_url, width: 500, class: "img-responsive img-circle uni2"
+
+
+/ = link_to "Finish the quiz", end_elos_path, class: "btn btn-orange"
+
+
+%p.description Click your favourite university!
+.row
+  = link_to select_elo_path(@university1, @university2) do
+    #box{style: "background: url(#{@university1.image_url})"}
+      #overlay
+        %span{:id => "letter"} A
+
+  = link_to select_elo_path(@university1, @university2) do
+    #box2{style: "background: url(#{@university2.image_url})"}
+      #overlay
+        %span{:id => "letter"} B
+
+%div= link_to "I'm ready to see my results now.", end_elos_path, class: "btn btn-default"

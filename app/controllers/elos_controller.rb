@@ -16,7 +16,6 @@ class ElosController < ApplicationController
   end
 
   def complete
-
     high_score = current_user.elo_scores.find_by_university_id(params[:preferred_university_id])
     low_score = current_user.elo_scores.find_by_university_id(params[:other_university_id])
 
@@ -27,4 +26,10 @@ class ElosController < ApplicationController
 
     redirect_to elos_path
   end 
+
+  def end
+    @universities = current_user.elo_scores.sort_by do |elo|
+      elo.score
+    end.map(&:university).last(3)
+  end
 end

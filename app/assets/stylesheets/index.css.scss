@@ -21,7 +21,6 @@
   margin: 10% 20% 10% 20%;
   box-shadow: 0 0 3px #333 inset;
   border-radius: 10px;
-  /*visibility: hidden;*/
 }
 
 .info {
@@ -41,13 +40,22 @@
 }
 a:hover {
   color:white;
-  font-weight: bold;    /*http://upload.wikimedia.org/wikipedia/commons/9/98/Oxford_Botanic_Garden_in_Autumn_2004.jpg*/
+  font-weight: bold;
 }
 
 .loginbox {
-  background-image: image-url("cover.jpg");
-  background-size: 200%;
+  background-image: url(http://loseweightandgainhealth.files.wordpress.com/2013/09/st-johns-red-brick.jpg);
+  background-size: 100%;
   padding: 16px;
   border-top: 3px solid white;
   border-bottom: 3px solid white;
+}
+
+.btn.btn-orange {
+  margin: 4px;
+  color: white;
+  background-color: #FF6A22;
+    &:hover {
+      background-color: #EE5911;
+    }
 }

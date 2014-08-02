@@ -16,4 +16,5 @@ Unilo::Application.routes.draw do
   get 'elos' => 'elos#index', as: :elos
   get 'elos/:id1/:id2' => 'elos#show', as: :elo
   get 'elos/:preferred_university_id/:other_university_id/complete' => 'elos#complete', as: :select_elo
+  get 'elos/end' => 'elos#end', as: :end_elos
 end

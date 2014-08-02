@@ -6,23 +6,19 @@ body {
   font-family: "Arvo", serif;
   color: black;
   font-size: 24px;
+  background-color: #eee;
+  width: auto;
+  padding: 32px;
+  margin-top: -12px;
+  margin-bottom: 12px;
+  text-align: left;
+  h3 {
+    font-family: "Droid Sans", sans-serif;
+  }
 }
 
-.resultsbox {
-  padding: 16px;
-}
 
-.btn.btn-orange {
-  margin: 4px;
-  color: white;
-  background-color: #FF6A22;
-    &:hover {
-      background-color: #EE5911;
-    }
-}
 /*start of fancy bit*/
-
-@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 .animate {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -96,7 +92,7 @@ body {
 		padding: 0 !important;
 	}
 	.info-card .info-card-details .info-card-header h3 {
-		color: LightSeaGreen;
+		color: #8EB634;
 		font-size: 15px;
 		font-weight: 400;
 		margin-top: 5px;
