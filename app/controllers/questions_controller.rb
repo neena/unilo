@@ -22,11 +22,9 @@ class QuestionsController < ApplicationController
   def complete
     current_user.elo_scores.each{|e| e.delete}
 
-    current_user.preferences[:jacs_course_id] = "001"
+    jacs = JacsCode.find(current_user.preferences[:jacs_course_id].to_i)
 
-    Course.all.select do |course|
-      course.jacs == current_user.preferences[:jacs_course_id]
-    end.inject({}) do |courses, c|
+    jacs.courses.inject({}) do |courses, c|
       courses[c] = current_user.preferences.inject(0) do |score, (k, v)|
         k = k.to_s
         if (!v.blank? && !c.get_attribute(k).blank? && v.is_a?(Float))
