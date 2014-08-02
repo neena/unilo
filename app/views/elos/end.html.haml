@@ -15,3 +15,4 @@
           %h1= uni.title
         .info-card-detail{class: "[ ]"}
           %p= uni.description
+          %p= link_to "WhatUni", "http://www.whatuni.com/degrees/university-uk/#{uni.name.underscore.gsub("_", "-")}-ranking/#{uni.ukprn}/page.html"
