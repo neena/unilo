@@ -5,7 +5,6 @@ class University < ActiveRecord::Base
   has_many :elo_scores
 
   def set_image_url
-    puts "https://api.datamarket.azure.com/Bing/Search/v1/Image?$format=json&Query=%27#{CGI.escape(self.title + " campus")}%27"
     data = JSON.parse(open("https://api.datamarket.azure.com/Bing/Search/v1/Image?$format=json&Query=%27#{CGI.escape(self.title + " campus")}%27", :http_basic_authentication=>["8g4bf1KG8MEmBTM1JMnPv47TbemHVjJrhLfG6ZnOFcU", "8g4bf1KG8MEmBTM1JMnPv47TbemHVjJrhLfG6ZnOFcU"]).read)
     url = data["d"]["results"][0]["MediaUrl"]
     x = 1
@@ -13,6 +12,7 @@ class University < ActiveRecord::Base
       url = data["d"]["results"][x]["MediaUrl"]
       x += 1
     end
+    self.image_url = url
     self.save
     self.image_url
   end

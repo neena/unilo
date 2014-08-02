@@ -23,14 +23,14 @@
       .answer.row.col-md-6.slider
         %input{:type => "range", :value => "5", :min => "-10", :max => "10", "data-show-value" => "true", name: "response"}
 
-    - when "grades"
+    - when "agree-multi"
       .answer.row.col-md-6.grades
         %select.form-control
-          %option 1
-          %option 2
-          %option 3
-          %option 4
-          %option 5
+          %option Strongly Agree
+          %option Agree
+          %option No opinion either way
+          %option Disagree
+          %option Strongly disagree
 
     - when "jacs"
       .ui-widget

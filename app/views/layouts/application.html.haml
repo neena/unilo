@@ -10,7 +10,7 @@
   %body
     .navbar.navbar-default.navbar-static-top.header
       .navbar-header= link_to "Unilo", root_path, class: "navbar-brand title"
-      .pull-right= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-default"
+      .pull-right= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-default navbar-btn"
 
     = render "layouts/flash"
     .container.central-col

@@ -49,7 +49,7 @@ class QuestionsController < ApplicationController
   def save_question_response
     @question = Question.find(params[:id])
     if @question.question_type == "slider"
-      current_user.preferences[@question.identifier.to_sym] = params[:response].to_i/10
+      current_user.preferences[@question.identifier.to_sym] = params[:response].to_i/10.0
     else
       current_user.preferences[@question.identifier.to_sym] = params[:response]
     end

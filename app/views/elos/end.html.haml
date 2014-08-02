@@ -1,3 +1,18 @@
-%ul
-  - @universities.each do |uni|
-    = uni.title
+.row.thanks
+  .col-md-12
+    .row
+      .col-md-6.thanksleft
+        %h1 Here are your top 3 universities...
+      .col-md-6.thanksright
+        %h3 This is your tailor-made list of universities best suited to your personality.
+
+- @universities.each do |uni|
+  .col-sm-6.col-md-4{class: "[ ]"}
+    .info-card{class: "[ ]"}
+      =image_tag uni.image_url, style: "width: 100%"
+      .info-card-details.animate{class: "[ ]"}
+        .info-card-header{class: "[ ]"}
+          %h1= uni.title
+          %h3= uni.location
+        .info-card-detail{class: "[ ]"}
+          %p= uni.description
